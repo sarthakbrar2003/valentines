@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Nanu ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ff6a88, #ff99ac);
+            text-align: center;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 38px;
+        }
+
+        .section {
+            background: rgba(255,255,255,0.2);
+            padding: 25px;
+            margin: 30px auto;
+            width: 85%;
+            max-width: 600px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            background: white;
+            color: #ff4b6e;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(255,255,255,0.6);
+        }
+
+        button:hover {
+            background: #ff4b6e;
+            color: white;
+            box-shadow: 0 0 25px rgba(255,255,255,1);
+        }
+
+        #hiddenMessage {
+            display: none;
+            margin-top: 15px;
+            font-size: 17px;
+        }
+
+        .heart {
+            position: fixed;
+            top: -10px;
+            animation: fall linear infinite;
+            font-size: 20px;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .counter {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic">
+    <source src="val2.mpeg" type="audio/mpeg">
+</audio>
+
+<h1>Happy Valentine's Day Nanu ❤️</h1>
+<p>From your Kuku 💌</p>
+
+<div class="section">
+    <h2>We've Been Together For 💕</h2>
+    <div class="counter" id="daysCounter"></div>
+</div>
+
+<div class="section">
+    <h2>Why You Mean Everything To Me 💖</h2>
+    <p>You make my world softer and brighter.</p>
+    <p>Your voice is my favorite comfort.</p>
+    <p>No matter the distance, you feel close to my heart.</p>
+    <p>I didn’t just fall in love with you… I chose you.</p>
+    <p>You are my support.</p>
+</div>
+
+<div class="section">
+    <h2>A Promise From Kuku 🌙</h2>
+    <p>
+        The night before Janmashtmi changed my life.  
+        Because that’s when I got you — a precious gift given to this struggling being by Kaanha ji.  
+        And I promise — no matter how far we are,  
+        I will stay, I will care, and I will love you the same way.  
+        And be with me babe, your boy promises he'll give you everything in life ❤️
+    </p>
+</div>
+
+<div class="section">
+    <h2>Open When You Miss Me 🔒</h2>
+    <button onclick="showMessage()">Click Here ❤️</button>
+    <div id="hiddenMessage">
+        <p>
+            Close your eyes for 5 seconds.  
+            Imagine me holding your hand.  
+            Imagine me hugging you tightly.  
+            That’s how much I miss you right now.  
+            And I always will, until we’re together IRL. 💕
+        </p>
+    </div>
+</div>
+
+<script>
+    function showMessage() {
+        document.getElementById("hiddenMessage").style.display = "block";
+
+        var music = document.getElementById("bgMusic");
+        music.volume = 0;
+        music.play();
+
+        // Smooth fade-in
+        var fade = setInterval(function () {
+            if (music.volume < 0.9) {
+                music.volume += 0.05;
+            } else {
+                clearInterval(fade);
+            }
+        }, 200);
+    }
+
+    // Exact moment: 14 Aug 2025 22:52
+    var startDate = new Date("August 14, 2025 22:52:00").getTime();
+
+    setInterval(function() {
+        var now = new Date().getTime();
+        var difference = now - startDate;
+
+        var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        var minutes = Math.floor((difference / (1000 * 60)) % 60);
+        var seconds = Math.floor((difference / 1000) % 60);
+
+        document.getElementById("daysCounter").innerHTML =
+        days + " days " +
+        hours + " hours " +
+        minutes + " minutes " +
+        seconds + " seconds ❤️<br>" +
+        "Since Kuku texted 'hi' to Nanu ✨";
+    }, 1000);
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+
+    setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
